@@ -15,10 +15,15 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <div className="mx-auto max-w-7xl px-6 py-4">
-        <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-xl px-5 py-3 shadow-[0_0_60px_-15px_rgba(56,189,248,0.4)]">
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-xl px-5 py-3 shadow-[0_0_60px_-15px_rgba(56,189,248,0.4)] will-change-transform"
+        >
           <a href="#top" className="flex items-center gap-2">
             <div className="relative">
-              <div className="absolute inset-0 blur-md bg-cyan-400/60 rounded-full" />
+              <div className="absolute inset-0 blur-md bg-cyan-400/60 rounded-full animate-pulse" />
               <Sparkles className="relative h-7 w-7 text-cyan-300" />
             </div>
             <span className="font-semibold tracking-tight text-white">Somero Auto Spa</span>
@@ -26,22 +31,33 @@ export default function Navbar() {
 
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((n) => (
-              <a key={n.label} href={n.href} className="text-sm text-slate-200/80 hover:text-white transition-colors">
+              <motion.a
+                key={n.label}
+                href={n.href}
+                whileHover={{ y: -1, color: '#fff' }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                className="text-sm text-slate-200/80"
+              >
                 {n.label}
-              </a>
+              </motion.a>
             ))}
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-lg border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-cyan-200 hover:bg-cyan-400/20 transition">
+            <motion.a
+              href="#contact"
+              whileTap={{ scale: 0.98 }}
+              whileHover={{ boxShadow: "0 8px 40px rgba(34,211,238,0.6)" }}
+              className="inline-flex items-center gap-2 rounded-lg border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-cyan-200"
+            >
               <Phone className="h-4 w-4" /> Book now
-            </a>
+            </motion.a>
           </div>
 
           <button onClick={() => setOpen((v) => !v)} className="md:hidden inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 p-2 text-white">
             <Menu className="h-6 w-6" />
           </button>
-        </div>
+        </motion.div>
       </div>
 
       <AnimatePresence>
@@ -50,7 +66,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="md:hidden mx-6 mt-2 rounded-2xl border border-white/10 bg-slate-900/80 backdrop-blur-xl overflow-hidden"
+            className="md:hidden mx-6 mt-2 rounded-2xl border border-white/10 bg-slate-900/80 backdrop-blur-xl overflow-hidden will-change-transform"
           >
             <div className="flex flex-col p-2">
               {navItems.map((n) => (

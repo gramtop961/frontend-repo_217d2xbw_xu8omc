@@ -6,7 +6,13 @@ export default function CTA() {
       <div className="absolute inset-0 bg-[radial-gradient(800px_circle_at_50%_0%,rgba(34,211,238,0.08),transparent_40%)]" />
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-3xl border border-white/10 bg-slate-900/60 p-8 backdrop-blur shadow-[0_0_80px_-15px_rgba(34,211,238,0.4)]">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.6 }}
+            className="rounded-3xl border border-white/10 bg-slate-900/60 p-8 backdrop-blur shadow-[0_0_80px_-15px_rgba(34,211,238,0.4)] will-change-transform"
+          >
             <h3 className="text-2xl font-bold text-white">Book your detail</h3>
             <p className="mt-2 text-slate-300/80">Tell us about your car and preferred date. We’ll confirm within the day.</p>
             <form onSubmit={(e) => e.preventDefault()} className="mt-6 grid grid-cols-1 gap-4">
@@ -18,7 +24,13 @@ export default function CTA() {
               <p className="text-xs text-slate-400">Based in Somero. We serve the surrounding region.</p>
             </form>
           </motion.div>
-          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-3xl border border-white/10 bg-gradient-to-br from-cyan-500/10 via-fuchsia-500/10 to-blue-500/10 p-8">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.6 }}
+            className="rounded-3xl border border-white/10 bg-gradient-to-br from-cyan-500/10 via-fuchsia-500/10 to-blue-500/10 p-8 will-change-transform"
+          >
             <h4 className="text-white font-semibold">Why choose us</h4>
             <ul className="mt-4 space-y-3 text-slate-300/80">
               <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 rounded-full bg-cyan-300" /> Scandinavian-grade products and methods</li>

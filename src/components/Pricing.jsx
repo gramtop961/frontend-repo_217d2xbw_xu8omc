@@ -30,9 +30,20 @@ export default function Pricing() {
           <p className="mt-3 text-slate-300/80">Clear packages. No surprises. Custom quotes on request.</p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-100px' }}
+          variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.08 } } }}
+          className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
           {tiers.map((t) => (
-            <motion.div key={t.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className={`relative rounded-2xl border ${t.highlight ? 'border-cyan-400/40 bg-cyan-400/10' : 'border-white/10 bg-slate-900/50'} p-6 backdrop-blur shadow-[0_0_60px_-15px_rgba(34,211,238,0.3)]`}>
+            <motion.div
+              key={t.name}
+              variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.45 }}
+              className={`relative rounded-2xl border ${t.highlight ? 'border-cyan-400/40 bg-cyan-400/10' : 'border-white/10 bg-slate-900/50'} p-6 backdrop-blur shadow-[0_0_60px_-15px_rgba(34,211,238,0.3)] will-change-transform`}
+            >
               {t.highlight && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-cyan-400 px-3 py-1 text-xs font-medium text-slate-900 shadow">Most Popular</span>
               )}
@@ -48,7 +59,7 @@ export default function Pricing() {
               <a href="#contact" className={`mt-6 inline-flex w-full justify-center rounded-xl px-4 py-2 font-medium ${t.highlight ? 'bg-cyan-400 text-slate-900' : 'border border-white/15 text-white'}`}>Select</a>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

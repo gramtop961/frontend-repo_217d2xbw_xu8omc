@@ -16,15 +16,26 @@ export default function Process() {
           <p className="mt-3 text-slate-300/80">A meticulous, data-driven approach for flawless results.</p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-6">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-120px' }}
+          variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.05 } } }}
+          className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-6"
+        >
           {steps.map((s, idx) => (
-            <motion.div key={s.n} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.05 }} className="relative rounded-2xl border border-white/10 bg-slate-900/50 p-6 backdrop-blur">
+            <motion.div
+              key={s.n}
+              variants={{ hidden: { opacity: 0, y: 12, rotateX: -8 }, show: { opacity: 1, y: 0, rotateX: 0 } }}
+              transition={{ duration: 0.4, delay: idx * 0.02 }}
+              className="relative rounded-2xl border border-white/10 bg-slate-900/50 p-6 backdrop-blur will-change-transform"
+            >
               <div className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-cyan-400 text-slate-900 font-bold">{s.n}</div>
               <h3 className="mt-3 font-semibold text-white">{s.title}</h3>
               <p className="mt-2 text-sm text-slate-300/80">{s.desc}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
